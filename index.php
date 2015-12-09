@@ -33,14 +33,16 @@
         $("#neg").click(function(){
             //alert("button");
             var id = $("#neg").data('id');
-            var url = "http://localhost:5000/decideTweet/" + id + "&-" ;
+            var col  = $("#neg").data('col');
+            var url = "http://localhost:5000/decideTweet/" + id + "&" + col +"&-" ;
             //alert(url);
             $.get(url,function(data){ });
         });
         $("#pos").click(function(){
             //alert("button");
             var id = $("#pos").data('id');
-            var url = "http://localhost:5000/decideTweet/" + id + "&+" ;
+            var col  = $("#pos").data('col');
+            var url = "http://localhost:5000/decideTweet/" + id + "&" + col +"&+" ;
             //alert(url);
             $.get(url,function(data){ });
         });
@@ -128,9 +130,9 @@
 
         echo '<p class="lead">'.$table['text'].'</p>';
 
-        echo '<a href="index.php?col='.$table['collection'].'"> <button type="button" data-id="'.$table['id'].'" id="neg" class="btn btn-lg btn-info pull-left">Negative</button></a>';
+        echo '<a href="index.php?col='.$table['collection'].'"> <button type="button" data-id="'.$table['id'].'" data-col="'.$table['collection'].'" id="neg" class="btn btn-lg btn-info pull-left">Negative</button></a>';
         echo '<a href="index.php?col='.$table['collection'].'"> <button type="button" data-id="'.$table['id'].'" data-col="'.$table['collection'].'" id="del" class="btn btn-lg btn-danger">Delete</button></a>';
-        echo '<a href="index.php?col='.$table['collection'].'"> <button type="button" data-id="'.$table['id'].'" id="pos" class="btn btn-lg btn-success pull-right">Positive</button></a>';
+        echo '<a href="index.php?col='.$table['collection'].'"> <button type="button" data-id="'.$table['id'].'" data-col="'.$table['collection'].'" id="pos" class="btn btn-lg btn-success pull-right">Positive</button></a>';
       }else{
         echo '<p class="lead">There are no tweets in '.$_GET['col'].' collection :(</p>';
         echo '<a href="index.php"><button type="button" class="btn btn-primary">Select another collection</button></a>';
