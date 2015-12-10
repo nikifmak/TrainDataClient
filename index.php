@@ -23,7 +23,7 @@
             var id = $("#del").data('id');
             var col  = $("#del").data('col');
             //alert(temp);
-            var url = "http://localhost:5000/deleteTweet/" + id + "&" + col;
+            var url = "http://147.102.19.88:5000/deleteTweet/" + id + "&" + col;
             //alert(url);
             $.get(url,function(data){ });
             //var nextpage = "index.php?" + col;
@@ -34,7 +34,7 @@
             //alert("button");
             var id = $("#neg").data('id');
             var col  = $("#neg").data('col');
-            var url = "http://localhost:5000/decideTweet/" + id + "&" + col +"&-" ;
+            var url = "http://147.102.19.88:5000/decideTweet/" + id + "&" + col +"&-" ;
             //alert(url);
             $.get(url,function(data){ });
         });
@@ -42,7 +42,7 @@
             //alert("button");
             var id = $("#pos").data('id');
             var col  = $("#pos").data('col');
-            var url = "http://localhost:5000/decideTweet/" + id + "&" + col +"&+" ;
+            var url = "http://147.102.19.88:5000/decideTweet/" + id + "&" + col +"&+" ;
             //alert(url);
             $.get(url,function(data){ });
         });
@@ -113,17 +113,17 @@
     </div>
     <?php }else {
 
-      $url = "http://localhost:5000/getTweet/".$_GET['col'];
+      $url = "http://147.102.19.88:5000/getTweet/".$_GET['col'];
 
       $json = file_get_contents($url);
       $obj = json_decode($json);
       $table= json_decode($json,true);
 
-      #$url = "http://localhost:5000/deleteTweet/".$table['id'].'&'.$table['collection'];
+      #$url = "http://147.102.19.88:5000/deleteTweet/".$table['id'].'&'.$table['collection'];
       #echo $url;
       #$json = file_get_contents($url);
       #echo $table['c'].'<br>';
-      #echo $table['id'];
+      echo $table['id'];
 
       echo '<div class="jumbotron">';
       if (isset($table)) {
