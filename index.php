@@ -25,10 +25,13 @@
             //alert(temp);
             var url = "http://147.102.19.88:5000/deleteTweet/" + id + "&" + col;
             //alert(url);
-            $.get(url,function(data){ });
-            //var nextpage = "index.php?" + col;
-            //alert(nextpage);
+            var nextpage ="index.php?col=" + col;
             //window.location.replace(nextpage);
+            $.get(url,function(data){ });
+            setTimeout(function(){
+              window.location.reload(true);
+            },750);
+
         });
         $("#neg").click(function(){
             //alert("button");
@@ -37,6 +40,9 @@
             var url = "http://147.102.19.88:5000/decideTweet/" + id + "&" + col +"&-" ;
             //alert(url);
             $.get(url,function(data){ });
+            setTimeout(function(){
+              window.location.reload(true);
+            },750);
         });
         $("#pos").click(function(){
             //alert("button");
@@ -45,7 +51,11 @@
             var url = "http://147.102.19.88:5000/decideTweet/" + id + "&" + col +"&+" ;
             //alert(url);
             $.get(url,function(data){ });
+            setTimeout(function(){
+              window.location.reload(true);
+            },750);
         });
+
       });
     </script>
 
@@ -130,9 +140,9 @@
 
         echo '<p class="lead">'.$table['text'].'</p>';
 
-        echo '<a href="index.php?col='.$table['collection'].'"> <button type="button" data-id="'.$table['id'].'" data-col="'.$table['collection'].'" id="neg" class="btn btn-lg btn-info pull-left">Negative</button></a>';
-        echo '<a href="index.php?col='.$table['collection'].'"> <button type="button" data-id="'.$table['id'].'" data-col="'.$table['collection'].'" id="del" class="btn btn-lg btn-danger">Delete</button></a>';
-        echo '<a href="index.php?col='.$table['collection'].'"> <button type="button" data-id="'.$table['id'].'" data-col="'.$table['collection'].'" id="pos" class="btn btn-lg btn-success pull-right">Positive</button></a>';
+        echo '<button type="button" data-id="'.$table['id'].'" data-col="'.$table['collection'].'" id="neg" class="btn btn-lg btn-info pull-left">Negative</button>';
+        echo '<button type="button" data-id="'.$table['id'].'" data-col="'.$table['collection'].'" id="del" class="btn btn-lg btn-danger">Delete</button>';
+        echo '<button type="button" data-id="'.$table['id'].'" data-col="'.$table['collection'].'" id="pos" class="btn btn-lg btn-success pull-right">Positive</button>';
       }else{
         echo '<p class="lead">There are no tweets in '.$_GET['col'].' collection :(</p>';
         echo '<a href="index.php"><button type="button" class="btn btn-primary">Select another collection</button></a>';
